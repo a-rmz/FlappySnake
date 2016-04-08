@@ -15,18 +15,21 @@ public class GameLoop implements Runnable {
 
     int fps;
     boolean running;
+    private Game game;
     private Snake snake;
     private SurfaceHolder surfaceHolder;
 
-    public GameLoop(Snake snake, SurfaceHolder surfaceHolder) {
+    public GameLoop(Game game, SurfaceHolder surfaceHolder) {
         fps = 60;
-        running = true;
-        this.snake = snake;
+        running = false;
+        this.game = game;
+        this.snake = game.snake;
         this.surfaceHolder = surfaceHolder;
     }
 
     @Override
     public void run() {
+        running = true;
         int LoopTime = 1000 / fps; // 60 FPS
         long start, elapsed, wait;
 
@@ -40,16 +43,21 @@ public class GameLoop implements Runnable {
 
         while(running){
 
-            update();
-            draw();
+            if(!hasLost()) {
+                update();
+                draw();
 
-            if(wait < 0) wait = 5;
-            try{
-                Thread.sleep(wait);
+                if(wait < 0) wait = 5;
+                try{
+                    Thread.sleep(wait);
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
+            } else {
+                endGame();
             }
-            catch(Exception e){
-                e.printStackTrace();
-            }
+
         }
     }
 
@@ -81,5 +89,13 @@ public class GameLoop implements Runnable {
         p.setColor(Color.WHITE);
         canvas.drawColor(Color.BLACK);
         canvas.drawCircle(snake.getPos().getPosX(), snake.getPos().getPosY(), 30, p);
+    }
+
+    private boolean hasLost() {
+        return !snake.isAlive();
+    }
+
+    private void endGame() {
+        game.endGame();
     }
 }

@@ -18,7 +18,7 @@ public class Game {
     private GameLoop gameLoop;
     private SurfaceHolder surfaceHolder;
     private Resources resources;
-    private Snake snake;
+    public Snake snake;
     private Point size;
 
     public Game(SurfaceHolder surfaceHolder, Resources resources, Point size) {
@@ -29,7 +29,7 @@ public class Game {
 
         snake = new Snake(size);
 
-        gameLoop = new GameLoop(snake, surfaceHolder);
+        gameLoop = new GameLoop(this, surfaceHolder);
     }
 
     public void start() {
@@ -47,8 +47,14 @@ public class Game {
 
     }
 
+    public void endGame() {
+        System.out.println("Game ended");
+        stop();
+    }
+
     public void onTap(float pressure) {
         snake.onTap(pressure);
+
     }
 
 }

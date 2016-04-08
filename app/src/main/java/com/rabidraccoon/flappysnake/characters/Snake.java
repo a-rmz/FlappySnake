@@ -18,7 +18,7 @@ public class Snake {
     }
 
     private void init() {
-        pos = new Position(size.x/2, size.y/2, 0, 60, size.x, size.y, 2);
+        pos = new Position(size.x/2, 0, 0, 60, size.x, size.y, 2);
     }
 
     public void update() {
@@ -29,10 +29,12 @@ public class Snake {
         return this.pos;
     }
 
+    public boolean isAlive() {
+        return pos.getPosY() < pos.getMaxY();
+    }
+
     public void onTap(float pressure) {
-        int dy = -(int) ((pressure > 0.19) ? (250 * pressure) : (200 * pressure))
-                ;
-        System.out.println("dy: " + dy + "press: " + pressure);
+        int dy = -(int) ((pressure > 0.19) ? (250 * pressure) : (200 * pressure));
         pos.setDy(dy);
     }
 }

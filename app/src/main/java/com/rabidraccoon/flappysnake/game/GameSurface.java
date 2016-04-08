@@ -18,10 +18,12 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
 
     Game game;
     Context context;
+    boolean started;
 
     public GameSurface(Context context, Resources resources) {
         super(context);
         this.context = getContext();
+        started = false;
         getHolder().addCallback(this);
     }
 
@@ -30,7 +32,6 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
         Point size = new Point();
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
         game = new Game(holder, getResources(), size);
-        game.start();
         setOnTouchListener(this);
     }
 
@@ -51,6 +52,11 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        //start condition
+        if(!started) {
+            game.start();
+            started = true;
+        }
         game.onTap(event.getPressure());
         return false;
     }

@@ -54,8 +54,7 @@ public class Position {
     }
 
     public void setPosY(int posY) {
-        if(posY > maxY) this.posY = maxY;
-        else this.posY = posY;
+        this.posY = posY;
     }
 
     public int getDx() {
@@ -66,8 +65,8 @@ public class Position {
         this.dx = dx;
     }
 
-    public void movePosX() {
-        setPosX(posX + dx);
+    public int getMaxY() {
+        return this.maxY;
     }
 
     public void movePosY() {
