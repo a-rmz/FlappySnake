@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.view.WindowManager;
 /**
  * Created by alex on 4/8/16.
  */
-public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, View.OnClickListener{
+public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
 
     Game game;
     Context context;
@@ -30,7 +31,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
         game = new Game(holder, getResources(), size);
         game.start();
-        setOnClickListener(this);
+        setOnTouchListener(this);
     }
 
     @Override
@@ -49,7 +50,8 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
     }
 
     @Override
-    public void onClick(View v) {
-        game.onTap();
+    public boolean onTouch(View v, MotionEvent event) {
+        game.onTap(event.getPressure());
+        return false;
     }
 }

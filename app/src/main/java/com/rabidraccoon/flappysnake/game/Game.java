@@ -47,8 +47,8 @@ public class Game {
 
     }
 
-    public void onTap() {
-        snake.onTap();
+    public void onTap(float pressure) {
+        snake.onTap(pressure);
     }
 
 }

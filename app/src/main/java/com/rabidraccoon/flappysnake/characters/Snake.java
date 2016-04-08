@@ -1,7 +1,6 @@
 package com.rabidraccoon.flappysnake.characters;
 
 import android.graphics.Point;
-import android.util.DisplayMetrics;
 
 import com.rabidraccoon.flappysnake.utils.Position;
 
@@ -30,7 +29,10 @@ public class Snake {
         return this.pos;
     }
 
-    public void onTap() {
-        pos.setDy(-60);
+    public void onTap(float pressure) {
+        int dy = -(int) ((pressure > 0.19) ? (250 * pressure) : (200 * pressure))
+                ;
+        System.out.println("dy: " + dy + "press: " + pressure);
+        pos.setDy(dy);
     }
 }
