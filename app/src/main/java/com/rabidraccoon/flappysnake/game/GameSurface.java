@@ -60,4 +60,6 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
         game.onTap(event.getPressure());
         return false;
     }
+
+
 }

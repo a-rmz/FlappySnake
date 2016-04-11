@@ -87,8 +87,14 @@ public class GameLoop implements Runnable {
     private void updateCanvas(Canvas canvas) {
         Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
         p.setColor(Color.WHITE);
+        p.setStyle(Paint.Style.STROKE);
+        Paint t = new Paint(Paint.ANTI_ALIAS_FLAG);
+        t.setColor(Color.BLACK);
         canvas.drawColor(Color.BLACK);
-        canvas.drawCircle(snake.getPos().getPosX(), snake.getPos().getPosY(), 30, p);
+//        canvas.drawCircle(snake.getPos().getPosX(), snake.getPos().getPosY() + snake.getPos().getHeight(), snake.getPos().getHeight(), p);
+        canvas.drawRect(snake.getCollider(), p);
+        canvas.drawBitmap(snake.image, snake.getPos().getPosX() - snake.getPos().getWidth()/2, snake.getPos().getPosY(), t);
+
     }
 
     private boolean hasLost() {

@@ -29,9 +29,10 @@ public class FlappySnakeMain extends AppCompatActivity {
 
         frameLayout = (FrameLayout) (findViewById(R.id.screen));
         gameSurface = new GameSurface(this, getResources());
+        frameLayout.removeAllViews();
         frameLayout.addView(gameSurface);
-
     }
+
 
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -45,4 +46,5 @@ public class FlappySnakeMain extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }
+
 }

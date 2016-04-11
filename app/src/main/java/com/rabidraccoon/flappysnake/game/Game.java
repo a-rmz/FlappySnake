@@ -27,7 +27,7 @@ public class Game {
 
         this.size = size;
 
-        snake = new Snake(size);
+        snake = new Snake(size, resources);
 
         gameLoop = new GameLoop(this, surfaceHolder);
     }
