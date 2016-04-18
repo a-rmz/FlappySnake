@@ -40,7 +40,8 @@ public class Snake {
     }
 
     public boolean isAlive() {
-        return pos.getPosY() < (pos.getMaxY() + 2 * pos.getHeight());
+        //return pos.getPosY() < (pos.getMaxY() + 2 * pos.getHeight()); TODO
+        return true;
     }
 
     public void onTap(float pressure) {

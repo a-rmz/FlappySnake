@@ -15,29 +15,49 @@ import com.rabidraccoon.flappysnake.utils.Position;
 public class Background {
 
     Point screenSize;
-    Position position;
+    Position position1, position2;
     Bitmap bg;
 
     public Background(Point screenSize, Resources resources) {
-        position = new Position();
+        position1 = new Position();
+        position2 = new Position();
+        this.screenSize = screenSize;
         bg = BitmapFactory.decodeResource(resources, R.drawable.background);
-        position.setDimens(bg);
+        position1.setDimens(bg);
+        position2.setDimens(bg);
         init();
     }
 
     public void init() {
-        position.setDx(2);
+        position1.setDx(3);
+        position1.setMaxX(screenSize.x);
+        position2.setDx(3);
+        position2.setMaxX(screenSize.x);
+        position2.setPosX(-position2.getWidth()+3);
     }
 
     public void update() {
-        position.movePosX();
+        position1.movePosX();
+        position2.movePosX();
     }
 
     public Bitmap getBg() {
         return bg;
     }
 
-    public Rect getViewBounds() {
-        return new Rect(position.getPosX(), 0, (position.getWidth() * 2 / 3) + position.getPosX(), position.getHeight());
+    public Rect getViewBounds1() {
+        return new Rect(position1.getPosX(), 0, position1.getMaxX() + position1.getPosX(), position1.getHeight());
+    }
+
+    public Rect getViewBounds2() {
+        return new Rect(position2.getPosX(), 0, position2.getMaxX() + position2.getPosX(), position2.getHeight());
+    }
+
+    public Position getPosition1() {
+        return position1;
+    }
+
+    public Position getPosition2() {
+        return this.position2;
     }
 }

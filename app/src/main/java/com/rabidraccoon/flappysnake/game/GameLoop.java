@@ -93,9 +93,10 @@ public class GameLoop implements Runnable {
         Paint t = new Paint(Paint.ANTI_ALIAS_FLAG);
         t.setColor(Color.BLACK);
         canvas.drawColor(Color.BLACK);
-//        canvas.drawCircle(snake.getPos().getPosX(), snake.getPos().getPosY() + snake.getPos().getHeight(), snake.getPos().getHeight(), p);
-        // Background
-        canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds(), game.getScreenDimens(), t);
+        // Background 1
+        canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds1(), game.getScreenDimens(), t);
+        // Background 2
+        canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds2(), game.getScreenDimens(), t);
         // Snake collider
         canvas.drawRect(snake.getCollider(), p);
         // Snake bmp
