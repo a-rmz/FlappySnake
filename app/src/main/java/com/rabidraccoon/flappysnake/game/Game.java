@@ -2,11 +2,13 @@ package com.rabidraccoon.flappysnake.game;
 
 import android.content.res.Resources;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.View;
 
+import com.rabidraccoon.flappysnake.background.Background;
 import com.rabidraccoon.flappysnake.characters.Snake;
 
 /**
@@ -19,6 +21,7 @@ public class Game {
     private SurfaceHolder surfaceHolder;
     private Resources resources;
     public Snake snake;
+    public Background background;
     private Point size;
 
     public Game(SurfaceHolder surfaceHolder, Resources resources, Point size) {
@@ -28,6 +31,7 @@ public class Game {
         this.size = size;
 
         snake = new Snake(size, resources);
+        background = new Background(size, resources);
 
         gameLoop = new GameLoop(this, surfaceHolder);
     }
@@ -55,6 +59,10 @@ public class Game {
     public void onTap(float pressure) {
         snake.onTap(pressure);
 
+    }
+
+    public Rect getScreenDimens() {
+        return new Rect(0, 0, size.x, size.y + 150);
     }
 
 }

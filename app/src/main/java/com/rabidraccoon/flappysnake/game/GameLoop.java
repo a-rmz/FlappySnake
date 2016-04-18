@@ -3,6 +3,7 @@ package com.rabidraccoon.flappysnake.game;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
@@ -67,6 +68,7 @@ public class GameLoop implements Runnable {
 
     private void update() {
         snake.update();
+        game.background.update();
     }
 
     private void draw() {
@@ -92,9 +94,12 @@ public class GameLoop implements Runnable {
         t.setColor(Color.BLACK);
         canvas.drawColor(Color.BLACK);
 //        canvas.drawCircle(snake.getPos().getPosX(), snake.getPos().getPosY() + snake.getPos().getHeight(), snake.getPos().getHeight(), p);
+        // Background
+        canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds(), game.getScreenDimens(), t);
+        // Snake collider
         canvas.drawRect(snake.getCollider(), p);
-        canvas.drawBitmap(snake.image, snake.getPos().getPosX() - snake.getPos().getWidth()/2, snake.getPos().getPosY(), t);
-
+        // Snake bmp
+        canvas.drawBitmap(snake.image, snake.getPos().getPosX() - snake.getPos().getWidth() / 2, snake.getPos().getPosY(), t);
     }
 
     private boolean hasLost() {

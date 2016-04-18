@@ -42,6 +42,10 @@ public class Position {
         this.dy = dy;
     }
 
+    public void setDx(int dx) {
+        this.dx = dx;
+    }
+
     public int getPosY() {
         return posY;
     }
@@ -56,6 +60,10 @@ public class Position {
         }
     }
 
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
     public int getMaxY() {
         return this.maxY;
     }
@@ -63,6 +71,10 @@ public class Position {
     public void movePosY() {
         dy = (dy <= 0) ? dy+3 : dy+gravity;
         setPosY(posY + dy);
+    }
+
+    public void movePosX() {
+        setPosX(posX + dx);
     }
 
     public void setDimens(int width, int height) {

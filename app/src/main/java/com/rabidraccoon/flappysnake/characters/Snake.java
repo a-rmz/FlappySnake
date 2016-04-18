@@ -27,7 +27,7 @@ public class Snake {
     }
 
     private void init() {
-        pos = new Position(size.x/2, 0, 0, 60, size.y, 2);
+        pos = new Position(size.x/2, 0, 0, 60, size.y, 5);
         pos.setDimens(image);
     }
 
@@ -44,7 +44,7 @@ public class Snake {
     }
 
     public void onTap(float pressure) {
-        int dy = -(int) ((pressure > 0.19) ? (250 * pressure) : (200 * pressure));
+        int dy = -(int) ((pressure > 0.19) ? (280 * pressure) : (230 * pressure));
         pos.setDy(dy);
     }
 
