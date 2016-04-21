@@ -9,6 +9,7 @@ import android.view.SurfaceHolder;
 import android.view.View;
 
 import com.rabidraccoon.flappysnake.background.Background;
+import com.rabidraccoon.flappysnake.blocks.ColumnManager;
 import com.rabidraccoon.flappysnake.characters.Snake;
 
 /**
@@ -22,6 +23,7 @@ public class Game {
     private Resources resources;
     public Snake snake;
     public Background background;
+    public ColumnManager columnManager;
     private Point size;
 
     public Game(SurfaceHolder surfaceHolder, Resources resources, Point size) {
@@ -32,6 +34,7 @@ public class Game {
 
         snake = new Snake(size, resources);
         background = new Background(size, resources);
+        columnManager = new ColumnManager(size, resources);
 
         gameLoop = new GameLoop(this, surfaceHolder);
     }

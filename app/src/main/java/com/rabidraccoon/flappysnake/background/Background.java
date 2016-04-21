@@ -37,8 +37,8 @@ public class Background {
     }
 
     public void update() {
-        position1.movePosX();
-        position2.movePosX();
+        position1.movePosX(position1.getWidth(), -1);
+        position2.movePosX(position2.getWidth(), -1);
     }
 
     public Bitmap getBg() {

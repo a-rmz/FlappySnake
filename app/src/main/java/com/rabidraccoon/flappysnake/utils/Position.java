@@ -39,6 +39,9 @@ public class Position {
     public int getDy() {
         return dy;
     }
+    public int getDx() {
+        return dx;
+    }
 
     public void setDy(int dy) {
         this.dy = dy;
@@ -83,11 +86,19 @@ public class Position {
         setPosY(posY + dy);
     }
 
-    public void movePosX() {
-        if(this.posX < width) {
+    public void movePosX(int param, int dir) {
+        if(this.posX < param) {
             setPosX(posX + dx);
         } else {
-            setPosX(- width);
+            setPosX(dir * param);
+        }
+    }
+
+    public void movePosX(int param, int dir, boolean inv) {
+        if(this.posX > -width) {
+            setPosX(posX + dx);
+        } else {
+            setPosX(dir * param);
         }
     }
 
@@ -104,6 +115,16 @@ public class Position {
     public void setDimens(Bitmap bitmap) {
         width = bitmap.getWidth();
         height = bitmap.getHeight();
+    }
+
+
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public int getHeight() {

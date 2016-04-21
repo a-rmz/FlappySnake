@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
+import com.rabidraccoon.flappysnake.blocks.ColumnManager;
 import com.rabidraccoon.flappysnake.characters.Snake;
 
 /**
@@ -18,6 +19,7 @@ public class GameLoop implements Runnable {
     boolean running;
     private Game game;
     private Snake snake;
+    private ColumnManager columnManager;
     private SurfaceHolder surfaceHolder;
 
     public GameLoop(Game game, SurfaceHolder surfaceHolder) {
@@ -26,6 +28,7 @@ public class GameLoop implements Runnable {
         this.game = game;
         this.snake = game.snake;
         this.surfaceHolder = surfaceHolder;
+        this.columnManager = game.columnManager;
     }
 
     @Override
@@ -69,6 +72,7 @@ public class GameLoop implements Runnable {
     private void update() {
         snake.update();
         game.background.update();
+        game.columnManager.update();
     }
 
     private void draw() {
@@ -92,6 +96,7 @@ public class GameLoop implements Runnable {
         p.setStyle(Paint.Style.STROKE);
         Paint t = new Paint(Paint.ANTI_ALIAS_FLAG);
         t.setColor(Color.BLACK);
+        t.setStyle(Paint.Style.FILL);
         canvas.drawColor(Color.BLACK);
         // Background 1
         canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds1(), game.getScreenDimens(), t);
@@ -101,6 +106,8 @@ public class GameLoop implements Runnable {
         canvas.drawRect(snake.getCollider(), p);
         // Snake bmp
         canvas.drawBitmap(snake.image, snake.getPos().getPosX() - snake.getPos().getWidth() / 2, snake.getPos().getPosY(), t);
+        // Columns
+        canvas.drawRect(columnManager.col1.getCollider(), t);
     }
 
     private boolean hasLost() {
