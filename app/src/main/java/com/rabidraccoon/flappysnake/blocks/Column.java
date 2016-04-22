@@ -19,18 +19,27 @@ public class Column {
     public Bitmap image;
     private Rect collider;
 
-    public Column(Point size, Bitmap image) {
+    public Column(Point size, Bitmap image, int mode) {
         this.size = size;
         this.image = image;
-        init();
+        init(mode);
     }
 
-    private void init() {
-        pos = new Position(size.x/2, 0, -(size.x * 5 / 720), 0, size.y, 0);
-        //pos.setDimens(image);
-        pos.setWidth(size.x / 5);
-        pos.setHeight(size.y / 3);
-        pos.setMaxX(size.x);
+    private void init(int mode) {
+        // upper column
+        if(mode == 1) {
+            pos = new Position(size.x/2, -2 * size.y / 3, -(size.x * 5 / 720), 0, size.y, 0);
+            //pos.setDimens(image);
+            pos.setWidth(size.x / 5);
+            pos.setHeight(size.y);
+            pos.setMaxX(size.x);
+        } else if(mode == -1) { // bottom column
+            pos = new Position(size.x/2, 2 * size.y / 3, -(size.x * 5 / 720), 0, size.y, 0);
+            //pos.setDimens(image);
+            pos.setWidth(size.x / 5);
+            pos.setHeight(size.y);
+            pos.setMaxX(size.x);
+        }
     }
 
 

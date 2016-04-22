@@ -108,6 +108,7 @@ public class GameLoop implements Runnable {
         canvas.drawBitmap(snake.image, snake.getPos().getPosX() - snake.getPos().getWidth() / 2, snake.getPos().getPosY(), t);
         // Columns
         canvas.drawRect(columnManager.col1.getCollider(), t);
+        canvas.drawRect(columnManager.col2.getCollider(), t);
     }
 
     private boolean hasLost() {

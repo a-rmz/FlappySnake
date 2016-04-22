@@ -3,11 +3,14 @@ package com.rabidraccoon.flappysnake.utils;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
+import java.util.Random;
+
 /**
  * Created by alex on 4/8/16.
  */
 public class Position {
 
+    private Random rand;
     private int posX;
     private int posY;
     private int dx;
@@ -25,6 +28,8 @@ public class Position {
         this.dy = dy;
         this.maxY = maxY;
         this.gravity = gravity;
+        rand = new Random();
+        rand.setSeed(System.currentTimeMillis());
     }
 
     public Position() {
@@ -34,6 +39,8 @@ public class Position {
         this.dy = 0;
         this.maxY = 0;
         this.maxX = 0;
+        rand = new Random();
+        rand.setSeed(System.currentTimeMillis());
     }
 
     public int getDy() {
@@ -63,6 +70,10 @@ public class Position {
             this.posY = 0;
             setDy(gravity);
         }
+    }
+
+    public void moveColumnY(int posY) {
+        this.posY = posY;
     }
 
     public void setPosX(int posX) {
@@ -99,6 +110,8 @@ public class Position {
             setPosX(posX + dx);
         } else {
             setPosX(dir * param);
+            if(rand.nextBoolean()) moveColumnY(posY - rand.nextInt(height/3));
+            else moveColumnY(posY + rand.nextInt(height/3));
         }
     }
 
