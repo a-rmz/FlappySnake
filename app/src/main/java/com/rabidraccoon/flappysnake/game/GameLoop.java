@@ -45,7 +45,7 @@ public class GameLoop implements Runnable {
 
         while (running) {
 
-            if (!hasLost()) {
+            if (/*!hasLost()*/true) {
                 update();
                 draw();
 

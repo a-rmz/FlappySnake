@@ -96,7 +96,7 @@ public class Position {
     }
 
     public void movePosY() {
-        dy = (dy <= 0) ? dy + 3 : dy + gravity;
+        dy = /*(dy <= 0) ? dy + 3 :*/ dy + gravity;
         setPosY(posY + dy);
     }
 
