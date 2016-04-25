@@ -20,12 +20,12 @@ public class Snake {
 
     public Snake(Point size, Resources resources) {
         this.size = size;
-        image = BitmapFactory.decodeResource(resources, R.drawable.snake_small);
+        image = BitmapFactory.decodeResource(resources, R.drawable.snake8b_small);
         init();
     }
 
     private void init() {
-        pos = new Position(size.x / 2, 0, 0, 60, size.y, 2);
+        pos = new Position(size.x / 2, 0, 0, 60, size.y, (size.x * 7) / 720);
         pos.setDimens(image);
     }
 
@@ -43,7 +43,7 @@ public class Snake {
     }
 
     public void onTap(float pressure) {
-        int dy = -(int) ((pressure > 0.19) ? (280 * pressure) : (230 * pressure));
+        int dy = -(int) ((pressure > 0.19) ? (230 * pressure) : (180 * pressure));
         pos.setDy(dy);
     }
 

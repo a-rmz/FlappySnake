@@ -20,10 +20,10 @@ public class ColumnManager {
     public ColumnManager(Point screenSize, Resources resources) {
         Bitmap img = BitmapFactory.decodeResource(resources, R.drawable.snake_small);
 
-        col1 = new Column(screenSize, img, 1, 1);
-        col2 = new Column(screenSize, img, -1, 1);
-        col3 = new Column(screenSize, img, 1, 3);
-        col4 = new Column(screenSize, img, -1, 3);
+        col1 = new Column(screenSize, img, 1, 2);
+        col2 = new Column(screenSize, img, -1, 2);
+        col3 = new Column(screenSize, img, 1, 4);
+        col4 = new Column(screenSize, img, -1, 4);
 
     }
 
