@@ -3,10 +3,8 @@ package com.rabidraccoon.flappysnake.characters;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 
 import com.rabidraccoon.flappysnake.R;
 import com.rabidraccoon.flappysnake.utils.Position;
@@ -27,7 +25,7 @@ public class Snake {
     }
 
     private void init() {
-        pos = new Position(size.x/2, 0, 0, 60, size.y, 5);
+        pos = new Position(size.x / 2, 0, 0, 60, size.y, 5);
         pos.setDimens(image);
     }
 
@@ -50,8 +48,7 @@ public class Snake {
     }
 
     public Rect getCollider() {
-        return new Rect(pos.getPosX()-pos.getWidth()/2, pos.getPosY(), pos.getPosX()+pos.getWidth()/2, pos.getPosY()+pos.getHeight());
-//        return new Rect(200, 200, 500, 600);
+        return new Rect(pos.getPosX() - pos.getWidth() / 2, pos.getPosY(), pos.getPosX() + pos.getWidth() / 2, pos.getPosY() + pos.getHeight());
     }
 
 }

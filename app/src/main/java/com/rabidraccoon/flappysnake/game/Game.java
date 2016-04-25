@@ -3,10 +3,7 @@ package com.rabidraccoon.flappysnake.game;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.SurfaceHolder;
-import android.view.View;
 
 import com.rabidraccoon.flappysnake.background.Background;
 import com.rabidraccoon.flappysnake.blocks.ColumnManager;

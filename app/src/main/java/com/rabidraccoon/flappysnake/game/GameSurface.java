@@ -3,8 +3,6 @@ package com.rabidraccoon.flappysnake.game;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -42,7 +40,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        if(game != null) {
+        if (game != null) {
             game.stop();
         }
 
@@ -53,7 +51,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         //start condition
-        if(!started) {
+        if (!started) {
             game.start();
             started = true;
         }

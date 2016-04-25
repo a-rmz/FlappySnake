@@ -46,6 +46,7 @@ public class Position {
     public int getDy() {
         return dy;
     }
+
     public int getDx() {
         return dx;
     }
@@ -62,10 +63,12 @@ public class Position {
         return posY;
     }
 
-    public int getPosX() { return posX; }
+    public int getPosX() {
+        return posX;
+    }
 
     public void setPosY(int posY) {
-        if(posY >= 0)  this.posY = posY;
+        if (posY >= 0) this.posY = posY;
         else {
             this.posY = 0;
             setDy(gravity);
@@ -93,12 +96,12 @@ public class Position {
     }
 
     public void movePosY() {
-        dy = (dy <= 0) ? dy+3 : dy+gravity;
+        dy = (dy <= 0) ? dy + 3 : dy + gravity;
         setPosY(posY + dy);
     }
 
     public void movePosX(int param, int dir) {
-        if(this.posX < param) {
+        if (this.posX < param) {
             setPosX(posX + dx);
         } else {
             setPosX(dir * param);
@@ -106,12 +109,13 @@ public class Position {
     }
 
     public void movePosX(int param, int dir, boolean inv) {
-        if(this.posX > -width) {
+        if (this.posX > -maxX) {
             setPosX(posX + dx);
         } else {
+            rand.setSeed(System.currentTimeMillis());
             setPosX(dir * param);
-            if(rand.nextBoolean()) moveColumnY(posY - rand.nextInt(height/3));
-            else moveColumnY(posY + rand.nextInt(height/3));
+            if (rand.nextBoolean()) moveColumnY(posY - rand.nextInt(height / 3));
+            else moveColumnY(posY + rand.nextInt(height / 3));
         }
     }
 
@@ -129,7 +133,6 @@ public class Position {
         width = bitmap.getWidth();
         height = bitmap.getHeight();
     }
-
 
 
     public void setWidth(int width) {

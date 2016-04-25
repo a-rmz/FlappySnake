@@ -3,8 +3,6 @@ package com.rabidraccoon.flappysnake.game;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.util.Log;
 import android.view.SurfaceHolder;
 
 import com.rabidraccoon.flappysnake.blocks.ColumnManager;
@@ -39,23 +37,22 @@ public class GameLoop implements Runnable {
 
         // Initializes what is needed for the Game.
 
-        start= System.nanoTime();
+        start = System.nanoTime();
         elapsed = System.nanoTime() - start;
         wait = LoopTime - elapsed / 1000000;
 
-        if(wait < 0) wait = 5;
+        if (wait < 0) wait = 5;
 
-        while(running){
+        while (running) {
 
-            if(!hasLost()) {
+            if (!hasLost()) {
                 update();
                 draw();
 
-                if(wait < 0) wait = 5;
-                try{
+                if (wait < 0) wait = 5;
+                try {
                     Thread.sleep(wait);
-                }
-                catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
@@ -78,7 +75,7 @@ public class GameLoop implements Runnable {
     private void draw() {
         synchronized (surfaceHolder) {
             Canvas canvas = surfaceHolder.lockCanvas();
-            if(canvas != null) {
+            if (canvas != null) {
                 try {
                     updateCanvas(canvas);
                 } catch (Exception e) {
@@ -109,6 +106,8 @@ public class GameLoop implements Runnable {
         // Columns
         canvas.drawRect(columnManager.col1.getCollider(), t);
         canvas.drawRect(columnManager.col2.getCollider(), t);
+        canvas.drawRect(columnManager.col3.getCollider(), t);
+        canvas.drawRect(columnManager.col4.getCollider(), t);
     }
 
     private boolean hasLost() {

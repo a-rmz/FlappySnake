@@ -6,8 +6,11 @@ package com.rabidraccoon.flappysnake.game.stateManager;
 public abstract class GameState {
 
     public abstract void init();
+
     public abstract void update();
+
     public abstract void draw();
+
     public abstract void onTouch(float pressure);
 
 }

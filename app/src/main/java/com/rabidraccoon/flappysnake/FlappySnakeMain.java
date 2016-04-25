@@ -2,11 +2,9 @@ package com.rabidraccoon.flappysnake;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.rabidraccoon.flappysnake.game.GameSurface;

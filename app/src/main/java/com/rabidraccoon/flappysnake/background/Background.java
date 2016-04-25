@@ -33,7 +33,7 @@ public class Background {
         position1.setMaxX(screenSize.x);
         position2.setDx(3);
         position2.setMaxX(screenSize.x);
-        position2.setPosX(-position2.getWidth()+3);
+        position2.setPosX(-position2.getWidth() + 3);
     }
 
     public void update() {
