@@ -16,15 +16,18 @@ public class Background {
 
     Point screenSize;
     Position position1, position2;
-    Bitmap bg;
+    Bitmap bg, shadow;
 
     public Background(Point screenSize, Resources resources) {
         position1 = new Position();
         position2 = new Position();
         this.screenSize = screenSize;
         bg = BitmapFactory.decodeResource(resources, R.drawable.background);
-        position1.setDimens(bg);
-        position2.setDimens(bg);
+        shadow = BitmapFactory.decodeResource(resources, R.drawable.b_shadow);
+//        position1.setDimens(bg);
+//        position2.setDimens(bg);
+        position1.setDimens(screenSize.x, screenSize.y);
+        position2.setDimens(screenSize.x, screenSize.y);
         init();
     }
 
@@ -43,6 +46,10 @@ public class Background {
 
     public Bitmap getBg() {
         return bg;
+    }
+
+    public Bitmap getShadow() {
+        return shadow;
     }
 
     public Rect getViewBounds1() {

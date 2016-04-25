@@ -18,7 +18,7 @@ public class ColumnManager {
     public Column col4;
 
     public ColumnManager(Point screenSize, Resources resources) {
-        Bitmap img = BitmapFactory.decodeResource(resources, R.drawable.snake_small);
+        Bitmap img = BitmapFactory.decodeResource(resources, R.drawable.pilar);
 
         col1 = new Column(screenSize, img, 1, 2);
         col2 = new Column(screenSize, img, -1, 2);

@@ -25,19 +25,22 @@ public class Column {
         // upper column
         if (mode == 1) {
             pos = new Position((size.x/2) * dx, -2 * size.y / 3, -(size.x * 8 / 720), 0, size.y, 0);
-            //pos.setDimens(image);
-            pos.setWidth(size.x / 5);
-            pos.setHeight(size.y);
+            pos.setDimens(image);
+            //pos.setWidth(size.x / 5);
+            //pos.setHeight(size.y);
             pos.setMaxX(size.x);
         } else if (mode == -1) { // bottom column
             pos = new Position((size.x/2) * dx, 2 * size.y / 3, -(size.x * 8 / 720), 0, size.y, 0);
-            //pos.setDimens(image);
-            pos.setWidth(size.x / 5);
-            pos.setHeight(size.y);
+            pos.setDimens(image);
+//            pos.setWidth(size.x / 5);
+//            pos.setHeight(size.y);
             pos.setMaxX(size.x);
         }
     }
 
+    public Position getPos() {
+        return pos;
+    }
 
     public void update() {
         pos.movePosX(pos.getMaxX(), 1, true);

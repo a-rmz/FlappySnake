@@ -23,6 +23,9 @@ public class Game {
     public ColumnManager columnManager;
     private Point size;
 
+    // Score
+    private int score;
+
     public Game(SurfaceHolder surfaceHolder, Resources resources, Point size) {
         this.surfaceHolder = surfaceHolder;
         this.resources = resources;
@@ -65,4 +68,15 @@ public class Game {
         return new Rect(0, 0, size.x, size.y + 150);
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void increaseScore() {
+        this.score++;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }

@@ -20,7 +20,7 @@ public class Snake {
 
     public Snake(Point size, Resources resources) {
         this.size = size;
-        image = BitmapFactory.decodeResource(resources, R.drawable.snake8b_small);
+        image = BitmapFactory.decodeResource(resources, R.drawable.quetz);
         init();
     }
 
