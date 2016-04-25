@@ -111,7 +111,17 @@ public class GameLoop implements Runnable {
     }
 
     private boolean hasLost() {
-        return !snake.isAlive();
+        return
+                // First column pair
+            (    (snake.getCollider().intersect(columnManager.col1.getCollider())
+                    || snake.getCollider().intersect(columnManager.col2.getCollider()))
+            ||
+                // Second column pair
+                (snake.getCollider().intersect(columnManager.col3.getCollider())
+                    || snake.getCollider().intersect(columnManager.col4.getCollider()))
+            ) ||
+                // Position
+            !snake.isAlive();
     }
 
     private void endGame() {

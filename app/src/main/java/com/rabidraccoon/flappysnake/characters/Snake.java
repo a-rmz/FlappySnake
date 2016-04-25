@@ -25,7 +25,7 @@ public class Snake {
     }
 
     private void init() {
-        pos = new Position(size.x / 2, 0, 0, 60, size.y, 5);
+        pos = new Position(size.x / 2, 0, 0, 60, size.y, 2);
         pos.setDimens(image);
     }
 
@@ -38,8 +38,8 @@ public class Snake {
     }
 
     public boolean isAlive() {
-        //return pos.getPosY() < (pos.getMaxY() + 2 * pos.getHeight()); TODO
-        return true;
+        return pos.getPosY() < (pos.getMaxY() + 2 * pos.getHeight());
+
     }
 
     public void onTap(float pressure) {
