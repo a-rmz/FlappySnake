@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.view.SurfaceHolder;
 
 import com.rabidraccoon.flappysnake.blocks.ColumnManager;
+import com.rabidraccoon.flappysnake.blocks.Counter;
 import com.rabidraccoon.flappysnake.characters.Snake;
 
 /**
@@ -18,6 +19,7 @@ public class GameLoop implements Runnable {
     private Game game;
     private Snake snake;
     private ColumnManager columnManager;
+    public Counter counter;
     private SurfaceHolder surfaceHolder;
 
     public GameLoop(Game game, SurfaceHolder surfaceHolder) {
@@ -27,6 +29,7 @@ public class GameLoop implements Runnable {
         this.snake = game.snake;
         this.surfaceHolder = surfaceHolder;
         this.columnManager = game.columnManager;
+        this.counter = game.counter;
     }
 
     @Override
@@ -70,6 +73,8 @@ public class GameLoop implements Runnable {
         snake.update();
         game.background.update();
         game.columnManager.update();
+        counter.update();
+        if(counter.getCollider().intersect(snake.getCollider().left, snake.getCollider().top, snake.getCollider().left, snake.getCollider().bottom)) game.increaseScore();
     }
 
     private void draw() {
@@ -97,14 +102,16 @@ public class GameLoop implements Runnable {
         canvas.drawColor(Color.BLACK);
         // Background 1
         canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds1(), game.getScreenDimens(), t);
-        canvas.drawBitmap(game.background.getShadow(), game.background.getViewBounds1(), game.getScreenDimens(), t);
         // Background 2
         canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds2(), game.getScreenDimens(), t);
-        canvas.drawBitmap(game.background.getShadow(), game.background.getViewBounds2(), game.getScreenDimens(), t);
+        //canvas.drawBitmap(game.background.getShadow(), game.getScreenDimens(), game.getScreenDimens(), t);
+        canvas.drawBitmap(game.background.getShadow(), game.getScreenDimens(), game.getScreenDimens(), t);
         // Snake collider
         canvas.drawRect(snake.getCollider(), p);
         // Snake bmp
         canvas.drawBitmap(snake.image, snake.getPos().getPosX() - snake.getPos().getWidth() / 2, snake.getPos().getPosY(), t);
+        // Counter
+        canvas.drawRect(counter.getCollider(), p);
         // Columns
         canvas.drawBitmap(columnManager.col1.image, columnManager.col1.getPos().getPosX(), columnManager.col1.getPos().getPosY(), t);
         canvas.drawBitmap(columnManager.col2.image, columnManager.col2.getPos().getPosX(), columnManager.col2.getPos().getPosY(), t);
@@ -115,7 +122,7 @@ public class GameLoop implements Runnable {
     }
 
     private boolean hasLost() {
-        return
+        return false; /*
                 // First column pair
             (    (snake.getCollider().intersect(columnManager.col1.getCollider())
                     || snake.getCollider().intersect(columnManager.col2.getCollider()))
@@ -125,7 +132,7 @@ public class GameLoop implements Runnable {
                     || snake.getCollider().intersect(columnManager.col4.getCollider()))
             ) ||
                 // Position
-            !snake.isAlive();
+            !snake.isAlive();*/
     }
 
     private void endGame() {

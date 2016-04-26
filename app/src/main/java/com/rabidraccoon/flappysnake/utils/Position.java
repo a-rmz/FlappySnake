@@ -32,6 +32,19 @@ public class Position {
         rand.setSeed(System.currentTimeMillis());
     }
 
+    public Position(int posX, int posY, int dx, int dy, int maxX, int maxY, int gravity) {
+        this.posX = posX;
+        this.posY = posY;
+        this.dx = dx;
+        this.dy = dy;
+        this.maxY = maxY;
+        this.maxX = maxX;
+        this.gravity = gravity;
+        rand = new Random();
+        rand.setSeed(System.currentTimeMillis());
+    }
+
+
     public Position() {
         this.posX = 0;
         this.posY = 0;
@@ -114,8 +127,16 @@ public class Position {
         } else {
             rand.setSeed(System.currentTimeMillis());
             setPosX(dir * param);
-            if (rand.nextBoolean()) moveColumnY(posY - rand.nextInt(height / 3));
-            else moveColumnY(posY + rand.nextInt(height / 3));
+            if (rand.nextBoolean()) moveColumnY(posY - rand.nextInt(height / 4) + (maxY/5));
+            else moveColumnY(posY + rand.nextInt(height / 4) - (maxY/5));
+        }
+    }
+
+    public void movePosXCounter() {
+        if (this.posX > (maxX / 2) - gravity) {
+            setPosX(posX + dx);
+        } else {
+            setPosX(posX + maxX - 1);
         }
     }
 

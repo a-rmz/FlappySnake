@@ -43,8 +43,8 @@ public class Snake {
     }
 
     public void onTap(float pressure) {
-        int dy = -(int) ((pressure > 0.19) ? (270 * pressure) : (220 * pressure));
-        pos.setDy(dy);
+        //int dy = -(int) ((pressure > 0.19) ? (270 * pressure) : (220 * pressure));
+        pos.setDy(size.y * -70 / 1280);
     }
 
     public Rect getCollider() {

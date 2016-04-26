@@ -7,6 +7,7 @@ import android.view.SurfaceHolder;
 
 import com.rabidraccoon.flappysnake.background.Background;
 import com.rabidraccoon.flappysnake.blocks.ColumnManager;
+import com.rabidraccoon.flappysnake.blocks.Counter;
 import com.rabidraccoon.flappysnake.characters.Snake;
 
 /**
@@ -21,6 +22,7 @@ public class Game {
     public Snake snake;
     public Background background;
     public ColumnManager columnManager;
+    public Counter counter;
     private Point size;
 
     // Score
@@ -35,6 +37,7 @@ public class Game {
         snake = new Snake(size, resources);
         background = new Background(size, resources);
         columnManager = new ColumnManager(size, resources);
+        counter = new Counter(size, columnManager, snake.getPos().getWidth());
 
         gameLoop = new GameLoop(this, surfaceHolder);
     }
@@ -74,6 +77,7 @@ public class Game {
 
     public void increaseScore() {
         this.score++;
+        System.out.println("Score: " + score);
     }
 
     public int getScore() {
