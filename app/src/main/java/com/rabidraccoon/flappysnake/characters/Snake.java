@@ -7,6 +7,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.rabidraccoon.flappysnake.R;
+import com.rabidraccoon.flappysnake.utils.Dimensions;
 import com.rabidraccoon.flappysnake.utils.Position;
 
 /**
@@ -15,17 +16,17 @@ import com.rabidraccoon.flappysnake.utils.Position;
 public class Snake {
 
     protected Position pos;
-    private Point size;
+    private Dimensions dimensions;
     public Bitmap image;
 
-    public Snake(Point size, Resources resources) {
-        this.size = size;
+    public Snake(Dimensions dimensions, Resources resources) {
+        this.dimensions = dimensions;
         image = BitmapFactory.decodeResource(resources, R.drawable.quetz);
         init();
     }
 
     private void init() {
-        pos = new Position(size.x / 2, 0, 0, 60, size.y, (size.x * 10) / 720);
+        pos = new Position(dimensions.getWidthPx() / 2, 0, 0, 60, dimensions.getHeightPx(), dimensions.dpToPx(10));
         pos.setDimens(image);
     }
 
@@ -44,7 +45,7 @@ public class Snake {
 
     public void onTap(float pressure) {
         //int dy = -(int) ((pressure > 0.19) ? (270 * pressure) : (220 * pressure));
-        pos.setDy(size.y * -70 / 1280);
+        pos.setDy(dimensions.dpToPx(-70));
     }
 
     public Rect getCollider() {

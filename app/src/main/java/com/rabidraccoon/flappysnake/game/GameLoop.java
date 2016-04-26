@@ -71,7 +71,6 @@ public class GameLoop implements Runnable {
 
     private void update() {
         snake.update();
-        game.background.update();
         game.columnManager.update();
         counter.update();
         if(counter.getCollider().intersect(snake.getCollider().left, snake.getCollider().top, snake.getCollider().left, snake.getCollider().bottom)) game.increaseScore();
@@ -101,11 +100,8 @@ public class GameLoop implements Runnable {
         t.setStyle(Paint.Style.FILL);
         canvas.drawColor(Color.BLACK);
         // Background 1
-        canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds1(), game.getScreenDimens(), t);
-        // Background 2
-        canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds2(), game.getScreenDimens(), t);
-        //canvas.drawBitmap(game.background.getShadow(), game.getScreenDimens(), game.getScreenDimens(), t);
-        canvas.drawBitmap(game.background.getShadow(), game.getScreenDimens(), game.getScreenDimens(), t);
+        canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds(), game.getScreenDimens(), t);
+
         // Snake collider
         canvas.drawRect(snake.getCollider(), p);
         // Snake bmp

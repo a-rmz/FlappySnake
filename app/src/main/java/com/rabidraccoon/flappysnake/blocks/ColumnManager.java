@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Point;
 
 import com.rabidraccoon.flappysnake.R;
+import com.rabidraccoon.flappysnake.utils.Dimensions;
 
 /**
  * Created by alex on 4/21/16.
@@ -17,21 +18,21 @@ public class ColumnManager {
     public Column col3;
     public Column col4;
 
-    public ColumnManager(Point screenSize, Resources resources) {
+    public ColumnManager(Dimensions dimensions, Resources resources) {
         Bitmap img = BitmapFactory.decodeResource(resources, R.drawable.pilar);
 
-        col1 = new Column(screenSize, img, 1, 2);
-        col2 = new Column(screenSize, img, -1, 2);
-        col3 = new Column(screenSize, img, 1, 4);
-        col4 = new Column(screenSize, img, -1, 4);
+//        col1 = new Column(screenSize, img, 1);
+//        col2 = new Column(screenSize, img, 1);
+//        col3 = new Column(screenSize, img, 1);
+//        col4 = new Column(screenSize, img, 1);
 
     }
 
     public void update() {
-        col1.update();
-        col2.update();
-        col3.update();
-        col4.update();
+//        col1.update();
+//        col2.update();
+//        col3.update();
+//        col4.update();
     }
 
 }

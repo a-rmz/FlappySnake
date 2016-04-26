@@ -9,6 +9,8 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.rabidraccoon.flappysnake.utils.Dimensions;
+
 /**
  * Created by alex on 4/8/16.
  */
@@ -28,8 +30,10 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Point size = new Point();
-        ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getSize(size);
-        game = new Game(holder, getResources(), size);
+        int density = getResources().getConfiguration().densityDpi;
+        int width = getResources().getConfiguration().screenWidthDp;
+        int height = getResources().getConfiguration().screenHeightDp;
+        game = new Game(holder, getResources(), new Dimensions(width, height, density));
         setOnTouchListener(this);
     }
 

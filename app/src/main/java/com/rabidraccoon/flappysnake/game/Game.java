@@ -9,6 +9,7 @@ import com.rabidraccoon.flappysnake.background.Background;
 import com.rabidraccoon.flappysnake.blocks.ColumnManager;
 import com.rabidraccoon.flappysnake.blocks.Counter;
 import com.rabidraccoon.flappysnake.characters.Snake;
+import com.rabidraccoon.flappysnake.utils.Dimensions;
 
 /**
  * Created by alex on 4/8/16.
@@ -23,21 +24,21 @@ public class Game {
     public Background background;
     public ColumnManager columnManager;
     public Counter counter;
-    private Point size;
+    public Dimensions dimensions;
 
     // Score
     private int score;
 
-    public Game(SurfaceHolder surfaceHolder, Resources resources, Point size) {
+    public Game(SurfaceHolder surfaceHolder, Resources resources, Dimensions dimensions) {
         this.surfaceHolder = surfaceHolder;
         this.resources = resources;
 
-        this.size = size;
+        this.dimensions = dimensions;
 
-        snake = new Snake(size, resources);
-        background = new Background(size, resources);
-        columnManager = new ColumnManager(size, resources);
-        counter = new Counter(size, columnManager, snake.getPos().getWidth());
+        snake = new Snake(dimensions, resources);
+        background = new Background(dimensions, resources);
+        columnManager = new ColumnManager(dimensions, resources);
+        counter = new Counter(dimensions, columnManager, snake.getPos().getWidth());
 
         gameLoop = new GameLoop(this, surfaceHolder);
     }
@@ -68,7 +69,7 @@ public class Game {
     }
 
     public Rect getScreenDimens() {
-        return new Rect(0, 0, size.x, size.y + 150);
+        return new Rect(0, 0, dimensions.getWidthPx(), dimensions.getHeightPx() + 150);
     }
 
     public void setScore(int score) {

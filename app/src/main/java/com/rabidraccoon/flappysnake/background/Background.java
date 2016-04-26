@@ -7,6 +7,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.rabidraccoon.flappysnake.R;
+import com.rabidraccoon.flappysnake.utils.Dimensions;
 import com.rabidraccoon.flappysnake.utils.Position;
 
 /**
@@ -14,57 +15,28 @@ import com.rabidraccoon.flappysnake.utils.Position;
  */
 public class Background {
 
-    Point screenSize;
-    Position position1, position2;
-    Bitmap bg, shadow;
+    Dimensions dimensions;
+    Position position;
+    Bitmap bg;
+    Rect rect;
 
-    public Background(Point screenSize, Resources resources) {
-        position1 = new Position();
-        position2 = new Position();
-        this.screenSize = screenSize;
+    public Background(Dimensions dimensions, Resources resources) {
+        position = new Position();
+        this.dimensions = dimensions;
         bg = BitmapFactory.decodeResource(resources, R.drawable.background);
-        shadow = BitmapFactory.decodeResource(resources, R.drawable.b_shadow);
-//        position1.setDimens(bg);
-//        position2.setDimens(bg);
-        position1.setDimens(screenSize.x, screenSize.y);
-        position2.setDimens(screenSize.x, screenSize.y);
-        init();
-    }
-
-    public void init() {
-        position1.setDx(3);
-        position1.setMaxX(screenSize.x);
-        position2.setDx(3);
-        position2.setMaxX(screenSize.x);
-        position2.setPosX(-position2.getWidth() + 3);
-    }
-
-    public void update() {
-        position1.movePosX(position1.getWidth(), -1);
-        position2.movePosX(position2.getWidth(), -1);
+        position.setDimens(dimensions.getWidthPx(), dimensions.getHeightPx());
+        rect = new Rect(0, 0, position.getWidth(), position.getHeight());
     }
 
     public Bitmap getBg() {
         return bg;
     }
 
-    public Bitmap getShadow() {
-        return shadow;
+    public Rect getViewBounds() {
+        return this.rect;
     }
 
-    public Rect getViewBounds1() {
-        return new Rect(position1.getPosX(), 0, position1.getMaxX() + position1.getPosX(), position1.getHeight());
-    }
-
-    public Rect getViewBounds2() {
-        return new Rect(position2.getPosX(), 0, position2.getMaxX() + position2.getPosX(), position2.getHeight());
-    }
-
-    public Position getPosition1() {
-        return position1;
-    }
-
-    public Position getPosition2() {
-        return this.position2;
+    public Position getPosition() {
+        return position;
     }
 }

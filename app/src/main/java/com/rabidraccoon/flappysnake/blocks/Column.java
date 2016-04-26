@@ -6,6 +6,8 @@ import android.graphics.Rect;
 
 import com.rabidraccoon.flappysnake.utils.Position;
 
+import java.util.Random;
+
 /**
  * Created by alex on 4/21/16.
  */
@@ -14,24 +16,25 @@ public class Column {
     protected Position pos;
     private Point size;
     public Bitmap image;
+    private Random rand;
 
-    public Column(Point size, Bitmap image, int mode, int dx) {
+    public Column(Point size, Bitmap image, int dx) {
         this.size = size;
         this.image = image;
-        init(mode, dx);
+        rand = new Random(System.currentTimeMillis());
+        init(dx);
     }
 
-    private void init(int mode, int dx) {
-        // upper column
-        if (mode == 1) {
-            pos = new Position((size.x/2) * dx, -(8 * size.y / 9), -(size.x * 8 / 720), 0, size.y, 0);
-            pos.setDimens(image);
-            pos.setMaxX(size.x);
-        } else if (mode == -1) { // bottom column
-            pos = new Position((size.x/2) * dx, 3 * size.y / 4, -(size.x * 8 / 720), 0, size.y, 0);
-            pos.setDimens(image);
-            pos.setMaxX(size.x);
-        }
+    private void init(int dx) {
+        pos = new Position(size.x, rand.nextInt(size.y), -(size.x * 8 / 720), 0, size.y, 0);
+        pos.setDimens(image);
+        pos.setPosX(size.x);
+        pos.setPosY(rand.nextInt(size.y) - pos.getHeight());
+        pos.setDx(0);
+        pos.setDy(0);
+        pos.setMaxY(size.y);
+        pos.setMaxX(size.x);
+
     }
 
     public Position getPos() {

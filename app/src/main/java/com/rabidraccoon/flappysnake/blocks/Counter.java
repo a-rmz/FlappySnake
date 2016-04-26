@@ -3,6 +3,7 @@ package com.rabidraccoon.flappysnake.blocks;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import com.rabidraccoon.flappysnake.utils.Dimensions;
 import com.rabidraccoon.flappysnake.utils.Position;
 
 /**
@@ -11,16 +12,16 @@ import com.rabidraccoon.flappysnake.utils.Position;
 public class Counter {
 
     private Position position;
-    private Point size;
+    private Dimensions dimensions;
 
-    public Counter(Point size, ColumnManager columnManager, int snakeWidth) {
-        this.size = size;
+    public Counter(Dimensions dimensions, ColumnManager columnManager, int snakeWidth) {
+        this.dimensions = dimensions;
         init(columnManager.col1, snakeWidth);
     }
 
-    private void init(Column column1, int snakeWidth) {
-        position = new Position(column1.getPos().getPosX() + column1.getPos().getWidth(), 0, column1.getPos().getDx(), 0, size.x, size.y, snakeWidth);
-        position.setHeight(size.y);
+    private void init(Column column, int snakeWidth) {
+        position = new Position(column.getPos().getPosX() + column.getPos().getWidth(), 0, column.getPos().getDx(), 0, dimensions.getWidthPx(), dimensions.getHeightPx(), snakeWidth);
+        position.setHeight(dimensions.getHeightPx());
         position.setWidth(5);
     }
 

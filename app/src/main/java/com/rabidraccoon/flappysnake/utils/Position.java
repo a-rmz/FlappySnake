@@ -104,6 +104,10 @@ public class Position {
         this.maxX = maxX;
     }
 
+    public void setMaxY(int maxY) {
+        this.maxY = maxY;
+    }
+
     public int getMaxX() {
         return maxX;
     }
