@@ -17,22 +17,33 @@ public class ColumnManager {
     public Column col2;
     public Column col3;
     public Column col4;
+    public Column col5;
+    public Column col6;
+    public Column col7;
+    public Column col8;
 
     public ColumnManager(Dimensions dimensions, Resources resources) {
-        Bitmap img = BitmapFactory.decodeResource(resources, R.drawable.pilar);
 
-//        col1 = new Column(screenSize, img, 1);
-//        col2 = new Column(screenSize, img, 1);
-//        col3 = new Column(screenSize, img, 1);
-//        col4 = new Column(screenSize, img, 1);
+        col1 = new Column(dimensions, resources, 5, 1);
+        col2 = new Column(dimensions, resources, 5, 2);
+        col3 = new Column(dimensions, resources, 5, 3);
+        col4 = new Column(dimensions, resources, 5, 4);
+        col5 = new Column(dimensions, resources, 5, 5);
+        col6 = new Column(dimensions, resources, 5, 6);
+        col7 = new Column(dimensions, resources, 5, 7);
+        col8 = new Column(dimensions, resources, 5, 8);
 
     }
 
     public void update() {
-//        col1.update();
-//        col2.update();
-//        col3.update();
-//        col4.update();
+        col1.update();
+        col2.update();
+        col3.update();
+        col4.update();
+        col5.update();
+        col6.update();
+        col7.update();
+        col8.update();
     }
 
 }

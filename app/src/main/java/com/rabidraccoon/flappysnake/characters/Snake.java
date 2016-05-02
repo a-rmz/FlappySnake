@@ -26,7 +26,13 @@ public class Snake {
     }
 
     private void init() {
-        pos = new Position(dimensions.getWidthPx() / 2, 0, 0, 60, dimensions.getHeightPx(), dimensions.dpToPx(10));
+        pos = new Position(
+                dimensions.getWidthPx() / 2,
+                dimensions.getHeightPx() / 2,
+                0,
+                30,
+                dimensions.getHeightPx(),
+                dimensions.dpToPx(4));
         pos.setDimens(image);
     }
 
@@ -45,7 +51,7 @@ public class Snake {
 
     public void onTap(float pressure) {
         //int dy = -(int) ((pressure > 0.19) ? (270 * pressure) : (220 * pressure));
-        pos.setDy(dimensions.dpToPx(-70));
+        pos.setDy(dimensions.dpToPx(-30));
     }
 
     public Rect getCollider() {
