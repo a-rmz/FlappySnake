@@ -14,7 +14,7 @@ import com.rabidraccoon.flappysnake.utils.Dimensions;
 /**
  * Created by alex on 4/8/16.
  */
-public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
+public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
     Game game;
     Context context;
@@ -33,7 +33,6 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
         int width = getResources().getConfiguration().screenWidthDp;
         int height = getResources().getConfiguration().screenHeightDp;
         game = new Game(holder, getResources(), new Dimensions(width, height, density));
-        setOnTouchListener(this);
     }
 
     @Override
@@ -52,15 +51,13 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback, 
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event) {
         //start condition
         if (!started) {
             game.start();
             started = true;
         }
-        game.onTap(event.getPressure());
-        return false;
+        game.onTap(event);
+        return true;
     }
-
-
 }

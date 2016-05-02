@@ -26,6 +26,28 @@ public class Column {
         this.dimensions = dimensions;
         rand = new Random(System.currentTimeMillis() + System.nanoTime());
         int pillar = R.drawable.pilar_2;
+
+
+        this.image = BitmapFactory.decodeResource(resources, defineSize());
+        init(dx, displacement);
+    }
+
+    private void init(int dx, int displacement) {
+        pos = new Position(
+                dimensions.getWidthPx() + rand.nextInt(dimensions.getWidthPx()) * (4 / displacement),
+                rand.nextInt(dimensions.getHeightPx()),
+                dimensions.dpToPx(-dx),
+                0,
+                dimensions.getHeightPx(),
+                dimensions.getWidthPx(),
+                0);
+        pos.setDimens(image);
+
+
+    }
+
+    public int defineSize() {
+        int pillar = 0;
         switch (rand.nextInt(4) + 2) {
             case 2:
                 pillar = R.drawable.pilar_2;
@@ -43,23 +65,7 @@ public class Column {
                 pillar = R.drawable.pilar_6;
                 break;
         }
-
-        this.image = BitmapFactory.decodeResource(resources, pillar);
-        init(dx, displacement);
-    }
-
-    private void init(int dx, int displacement) {
-        pos = new Position(
-                dimensions.getWidthPx() + rand.nextInt(dimensions.getWidthPx()) * (4 / displacement),
-                rand.nextInt(dimensions.getHeightPx()),
-                dimensions.dpToPx(-dx),
-                0,
-                dimensions.getHeightPx(),
-                dimensions.getWidthPx(),
-                0);
-        pos.setDimens(image);
-
-
+        return pillar;
     }
 
     public Position getPos() {

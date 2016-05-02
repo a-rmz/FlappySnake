@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.view.MotionEvent;
 
 import com.rabidraccoon.flappysnake.R;
 import com.rabidraccoon.flappysnake.utils.Dimensions;
@@ -49,9 +50,11 @@ public class Snake {
 
     }
 
-    public void onTap(float pressure) {
+    public void onTap(MotionEvent event) {
         //int dy = -(int) ((pressure > 0.19) ? (270 * pressure) : (220 * pressure));
-        pos.setDy(dimensions.dpToPx(-30));
+        int dy = -30;
+
+        pos.setDy(dimensions.dpToPx(dy));
     }
 
     public Rect getCollider() {

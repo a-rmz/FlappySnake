@@ -3,6 +3,7 @@ package com.rabidraccoon.flappysnake.game;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
 import com.rabidraccoon.flappysnake.background.Background;
@@ -63,8 +64,8 @@ public class Game {
         stop();
     }
 
-    public void onTap(float pressure) {
-        snake.onTap(pressure);
+    public void onTap(MotionEvent event) {
+        snake.onTap(event);
 
     }
 
