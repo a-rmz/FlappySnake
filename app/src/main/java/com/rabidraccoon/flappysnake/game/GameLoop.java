@@ -108,11 +108,25 @@ public class GameLoop implements Runnable {
         canvas.drawBitmap(snake.image, snake.getPos().getPosX() - snake.getPos().getWidth() / 2, snake.getPos().getPosY(), t);
         // Counter
         canvas.drawRect(counter.getCollider(), p);
+
+        // Shadows
+        canvas.drawBitmap(columnManager.shadow, columnManager.col1.getPos().getPosX(), columnManager.col1.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.shadow, columnManager.col2.getPos().getPosX(), columnManager.col2.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.shadow, columnManager.col3.getPos().getPosX(), columnManager.col3.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.shadow, columnManager.col4.getPos().getPosX(), columnManager.col4.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.shadow, columnManager.col5.getPos().getPosX(), columnManager.col5.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.shadow, columnManager.col6.getPos().getPosX(), columnManager.col6.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.shadow, columnManager.col7.getPos().getPosX(), columnManager.col7.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.shadow, columnManager.col8.getPos().getPosX(), columnManager.col8.getPos().getPosY(), t);
         // Columns
         canvas.drawBitmap(columnManager.col1.image, columnManager.col1.getPos().getPosX(), columnManager.col1.getPos().getPosY(), t);
         canvas.drawBitmap(columnManager.col2.image, columnManager.col2.getPos().getPosX(), columnManager.col2.getPos().getPosY(), t);
         canvas.drawBitmap(columnManager.col3.image, columnManager.col3.getPos().getPosX(), columnManager.col3.getPos().getPosY(), t);
         canvas.drawBitmap(columnManager.col4.image, columnManager.col4.getPos().getPosX(), columnManager.col4.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.col5.image, columnManager.col5.getPos().getPosX(), columnManager.col5.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.col6.image, columnManager.col6.getPos().getPosX(), columnManager.col6.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.col7.image, columnManager.col7.getPos().getPosX(), columnManager.col7.getPos().getPosY(), t);
+        canvas.drawBitmap(columnManager.col8.image, columnManager.col8.getPos().getPosX(), columnManager.col8.getPos().getPosY(), t);
 
 
     }

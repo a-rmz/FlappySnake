@@ -21,8 +21,10 @@ public class ColumnManager {
     public Column col6;
     public Column col7;
     public Column col8;
+    public Bitmap shadow;
 
     public ColumnManager(Dimensions dimensions, Resources resources) {
+        shadow = BitmapFactory.decodeResource(resources, R.drawable.pilar_shadow);
 
         col1 = new Column(dimensions, resources, 5, 1);
         col2 = new Column(dimensions, resources, 5, 2);
