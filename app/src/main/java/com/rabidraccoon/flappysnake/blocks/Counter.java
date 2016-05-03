@@ -16,7 +16,7 @@ public class Counter {
 
     public Counter(Dimensions dimensions, ColumnManager columnManager, int snakeWidth) {
         this.dimensions = dimensions;
-        init(columnManager.col1, snakeWidth);
+        init(columnManager.columns.get(0), snakeWidth);
     }
 
     private void init(Column column, int snakeWidth) {

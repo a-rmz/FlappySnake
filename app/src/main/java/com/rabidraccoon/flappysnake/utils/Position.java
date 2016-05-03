@@ -126,13 +126,15 @@ public class Position {
     }
 
     public void movePosX(int param, int dir, boolean inv) {
+        setPosX(posX + dx);
+        System.out.println("posx: " + posX);
+    }
+
+    public boolean isOnScreen() {
         if (this.posX > -maxX) {
-            setPosX(posX + dx);
+            return true;
         } else {
-            rand.setSeed(System.currentTimeMillis());
-            setPosX(dir * param);
-            if (rand.nextBoolean()) moveColumnY(posY - rand.nextInt(height / 4) + (maxY/5));
-            else moveColumnY(posY + rand.nextInt(height / 4) - (maxY/5));
+            return false;
         }
     }
 
