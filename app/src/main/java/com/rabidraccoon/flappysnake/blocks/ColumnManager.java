@@ -38,7 +38,7 @@ public class ColumnManager {
     }
 
     public void update() {
-        if (columns.size() < 6) { columns.add(new Column(dimensions, resources, 5, 1)); }
+        while (columns.size() < 6) { columns.add(new Column(dimensions, resources, 5, 1)); }
 
         Column col;
         Iterator<Column> it = columns.iterator();

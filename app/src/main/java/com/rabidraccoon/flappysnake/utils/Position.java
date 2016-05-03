@@ -131,7 +131,7 @@ public class Position {
     }
 
     public boolean isOnScreen() {
-        if (this.posX > -maxX) {
+        if (this.posX > -(2*width) ) {
             return true;
         } else {
             return false;
