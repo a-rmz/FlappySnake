@@ -25,8 +25,6 @@ public class Column {
     public Column(Dimensions dimensions, Resources resources, int dx, int displacement) {
         this.dimensions = dimensions;
         rand = new Random(System.currentTimeMillis() + System.nanoTime());
-        int pillar = R.drawable.pilar_2;
-
 
         this.image = BitmapFactory.decodeResource(resources, defineSize());
         init(dx, displacement);
