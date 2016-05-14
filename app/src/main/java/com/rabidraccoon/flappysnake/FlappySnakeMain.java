@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+import com.rabidraccoon.flappysnake.game.Game;
 import com.rabidraccoon.flappysnake.game.GameSurface;
 
 
@@ -29,8 +30,9 @@ public class FlappySnakeMain extends AppCompatActivity {
         gameSurface = new GameSurface(this, getResources());
         frameLayout.removeAllViews();
         frameLayout.addView(gameSurface);
-    }
 
+
+    }
 
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

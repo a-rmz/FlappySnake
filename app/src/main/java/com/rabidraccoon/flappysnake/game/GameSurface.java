@@ -33,6 +33,8 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         int width = getResources().getConfiguration().screenWidthDp;
         int height = getResources().getConfiguration().screenHeightDp;
         game = new Game(holder, getResources(), new Dimensions(width, height, density));
+
+
     }
 
     @Override
