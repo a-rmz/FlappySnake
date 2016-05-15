@@ -29,10 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameSurface.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameSurface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/GameSurface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73399013">
+            <state vertical-scroll-proportion="0.0">
               <caret line="63" column="23" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
               <folding>
                 <element signature="e#1554#1555#0" expanded="true" />
@@ -72,15 +72,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameLoop.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameLoop.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/GameLoop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="131" column="35" selection-start-line="131" selection-start-column="35" selection-end-line="131" selection-end-column="35" />
+            <state vertical-scroll-proportion="-0.6256158">
+              <caret line="92" column="14" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
               <folding>
                 <element signature="e#2159#2160#0" expanded="true" />
                 <element signature="e#2190#2191#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Snake.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/characters/Snake.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1657,10 +1667,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/utils/Position.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/blocks/ColumnManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/blocks/Column.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/GameLoop.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/FlappySnakeMain.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/Game.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/GameSurface.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/GameLoop.java" />
       </list>
     </option>
   </component>
@@ -2337,14 +2347,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/characters/Snake.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0706075">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/blocks/ColumnManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26600984">
@@ -2377,13 +2379,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/GameLoop.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/GameSurface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="131" column="35" selection-start-line="131" selection-start-column="35" selection-end-line="131" selection-end-column="35" />
+          <caret line="63" column="23" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
           <folding>
-            <element signature="e#2159#2160#0" expanded="true" />
-            <element signature="e#2190#2191#0" expanded="true" />
+            <element signature="e#1554#1555#0" expanded="true" />
+            <element signature="e#1584#1585#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2414,13 +2416,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/GameSurface.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/characters/Snake.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73399013">
-          <caret line="63" column="23" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rabidraccoon/flappysnake/game/GameLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6256158">
+          <caret line="92" column="14" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
           <folding>
-            <element signature="e#1554#1555#0" expanded="true" />
-            <element signature="e#1584#1585#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
+            <element signature="e#2190#2191#0" expanded="true" />
           </folding>
         </state>
       </provider>
