@@ -47,4 +47,16 @@ public class FlappySnakeMain extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        gameSurface.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gameSurface.onResume();
+    }
 }

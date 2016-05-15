@@ -1,11 +1,14 @@
 package com.rabidraccoon.flappysnake.game;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
+import com.rabidraccoon.flappysnake.R;
 import com.rabidraccoon.flappysnake.background.Background;
 import com.rabidraccoon.flappysnake.blocks.ColumnManager;
 import com.rabidraccoon.flappysnake.blocks.Counter;
@@ -26,6 +29,8 @@ public class Game {
     public ColumnManager columnManager;
     public Counter counter;
     public Dimensions dimensions;
+    private boolean hasStarted;
+    public Bitmap start;
 
     // Score
     private int score;
@@ -41,7 +46,14 @@ public class Game {
         columnManager = new ColumnManager(dimensions, resources);
         counter = new Counter(dimensions, columnManager, snake.getPos().getWidth());
 
+        this.start = BitmapFactory.decodeResource(resources, R.drawable.btn_start);
+
+        hasStarted = false;
         gameLoop = new GameLoop(this, surfaceHolder);
+    }
+
+    public void startGame() {
+        hasStarted = true;
     }
 
     public void start() {
@@ -65,8 +77,11 @@ public class Game {
     }
 
     public void onTap(MotionEvent event) {
-        snake.onTap(event);
-
+        if(!hasStarted) {
+            startGame();
+        } else {
+            snake.onTap(event);
+        }
     }
 
     public Rect getScreenDimens() {
@@ -84,5 +99,25 @@ public class Game {
 
     public int getScore() {
         return score;
+    }
+
+    public boolean hasStarted() {
+        return hasStarted;
+    }
+
+    public void onPause() {
+        try {
+            gameLoop.wait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onResume() {
+        try {
+            gameLoop.notify();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

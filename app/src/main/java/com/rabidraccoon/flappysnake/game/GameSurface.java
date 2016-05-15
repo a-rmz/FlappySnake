@@ -33,7 +33,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         int width = getResources().getConfiguration().screenWidthDp;
         int height = getResources().getConfiguration().screenHeightDp;
         game = new Game(holder, getResources(), new Dimensions(width, height, density));
-
+        game.start();
 
     }
 
@@ -47,19 +47,22 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         if (game != null) {
             game.stop();
         }
-
         game = null;
-
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //start condition
-        if (!started) {
-            game.start();
-            started = true;
-        }
         game.onTap(event);
         return true;
+    }
+
+    public void onPause() {
+        game.onPause();
+    }
+
+    public void onResume() {
+        if(game != null) {
+            game.onResume();
+        }
     }
 }

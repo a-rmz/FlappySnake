@@ -22,6 +22,7 @@ public class GameLoop implements Runnable {
     private ColumnManager columnManager;
     public Counter counter;
     private SurfaceHolder surfaceHolder;
+    Paint p, t, shadow;
 
     public GameLoop(Game game, SurfaceHolder surfaceHolder) {
         fps = 60;
@@ -31,6 +32,19 @@ public class GameLoop implements Runnable {
         this.surfaceHolder = surfaceHolder;
         this.columnManager = game.columnManager;
         this.counter = game.counter;
+
+        p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        p.setColor(Color.WHITE);
+        p.setStyle(Paint.Style.STROKE);
+
+        t = new Paint(Paint.ANTI_ALIAS_FLAG);
+        t.setColor(Color.BLACK);
+        t.setStyle(Paint.Style.FILL);
+
+        shadow = new Paint(Paint.ANTI_ALIAS_FLAG);
+        shadow.setColor(Color.BLACK);
+        shadow.setStyle(Paint.Style.FILL);
+        shadow.setAlpha(175);
     }
 
     @Override
@@ -71,10 +85,15 @@ public class GameLoop implements Runnable {
     }
 
     private void update() {
-        snake.update();
-        game.columnManager.update();
-        counter.update();
-        if(counter.getCollider().intersect(snake.getCollider().left, snake.getCollider().top, snake.getCollider().left, snake.getCollider().bottom)) game.increaseScore();
+        if(game.hasStarted()) {
+            snake.update();
+            game.columnManager.update();
+            counter.update();
+            if(counter.getCollider().intersect(snake.getCollider().left, snake.getCollider().top, snake.getCollider().left, snake.getCollider().bottom)) game.increaseScore();
+        } else {
+
+        }
+
     }
 
     private void draw() {
@@ -84,7 +103,7 @@ public class GameLoop implements Runnable {
                 try {
                     updateCanvas(canvas);
                 } catch (Exception e) {
-
+                    e.printStackTrace();
                 } finally {
                     surfaceHolder.unlockCanvasAndPost(canvas);
                 }
@@ -93,27 +112,29 @@ public class GameLoop implements Runnable {
     }
 
     private void updateCanvas(Canvas canvas) {
-        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
-        p.setColor(Color.WHITE);
-        p.setStyle(Paint.Style.STROKE);
-        Paint t = new Paint(Paint.ANTI_ALIAS_FLAG);
-        t.setColor(Color.BLACK);
-        t.setStyle(Paint.Style.FILL);
+
         canvas.drawColor(Color.BLACK);
         // Background 1
         canvas.drawBitmap(game.background.getBg(), game.background.getViewBounds(), game.getScreenDimens(), t);
 
-        // Snake collider
-        canvas.drawRect(snake.getCollider(), p);
-        // Snake bmp
-        canvas.drawBitmap(snake.image, snake.getPos().getPosX() - snake.getPos().getWidth() / 2, snake.getPos().getPosY(), t);
-        // Counter
-        canvas.drawRect(counter.getCollider(), p);
-
-        // Shadows
-        for(Column c : columnManager.columns) canvas.drawBitmap(columnManager.shadow, c.getPos().getPosX(), c.getPos().getPosY(), t);
-        // Columns
-        for(Column c : columnManager.columns) canvas.drawBitmap(c.image, c.getPos().getPosX(), c.getPos().getPosY(), t);
+        if(game.hasStarted()) {
+            // Snake collider
+            canvas.drawRect(snake.getCollider(), p);
+            // Snake bmp
+            canvas.drawBitmap(snake.image, snake.getPos().getPosX() - snake.getPos().getWidth() / 2, snake.getPos().getPosY(), t);
+            // Counter
+            canvas.drawRect(counter.getCollider(), p);
+            // Shadows
+            for(Column c : columnManager.columns) canvas.drawBitmap(columnManager.shadow, c.getPos().getPosX(), c.getPos().getPosY(), t);
+            // Columns
+            for(Column c : columnManager.columns) canvas.drawBitmap(c.image, c.getPos().getPosX(), c.getPos().getPosY(), t);
+        } else {
+            canvas.drawPaint(shadow);
+            canvas.drawBitmap(game.start,
+                    game.getScreenDimens().centerX() - game.start.getWidth()/2,
+                    game.getScreenDimens().centerY() - game.start.getHeight()/2,
+                    t);
+        }
 
     }
 
